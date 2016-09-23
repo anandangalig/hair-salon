@@ -19,7 +19,7 @@
         function setStylistName($new_stylist_name){
             $this->stylist_name = $new_stylist_name;
         }
-
+//==========NEED TO WRITE TEST FOR THIS METHOD AFTER CREATING Cleint Class!!!!===================
         function getClients() {
             $matching_clients = array();
             $belonging_clients = $GLOBALS['DB']->query("SELECT * FROM clients WHERE stylist_id = {$this->getId()};");
