@@ -15,8 +15,19 @@
     $app->get("/", function() use ($app) {
         return $app["twig"]->render("index.html.twig");
     });
-
+//====================STYLISTS=================================
     $app->get("/stylists", function() use ($app) {
+        return $app["twig"]->render("stylists.html.twig", array('stylists' => Stylist::getAll()));
+    });
+
+    $app->post("/stylists", function() use ($app) {
+        $new_stylist= new Stylist($_POST['new_stylist']);
+        $new_stylist->save();
+        return $app["twig"]->render("stylists.html.twig", array('stylists' => Stylist::getAll()));
+    });
+
+    $app->post("/delete_stylists", function() use ($app) {
+        Stylist::deleteAll();
         return $app["twig"]->render("stylists.html.twig");
     });
 
