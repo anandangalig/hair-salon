@@ -16,6 +16,7 @@
 
         protected function tearDown() {
             Stylist::deleteAll();
+            Client::deleteAll();
         }
 
         function test_save() {
@@ -96,5 +97,30 @@
             //ASSERT
             $this->assertEquals("Ed", $test_stylist->getStylistName());
         }
+
+        function test_getClients() {
+            //ARRANGE
+            //========The Stylist:================
+            $id = null;
+            $name = "Alicia";
+            $test_stylist = new Stylist($name, $id);
+            $test_stylist->save();
+            //========The Clients:================
+            $id = null;
+            $name1 = "Anand";
+            $name2 = "Baayaa";
+            $stylist_id = $test_stylist->getId();
+            $test_client1 = new Client($name1, $stylist_id, $id);
+            $test_client1->save();
+            $test_client2 = new Client($name2, $stylist_id, $id);
+            $test_client2->save();
+
+            //ACT
+            $result = $test_stylist->getClients();
+
+            //ASSERT
+            $this->assertEquals([$test_client1, $test_client2], $result);
+        }
+
     }
  ?>
