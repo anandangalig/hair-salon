@@ -57,7 +57,7 @@ _The user inputs both the word and the string of words to check within. The appl
 * _CREATE DATABASE hair_salon;_
 * _USE hair_salon;_
 * _CREATE TABLE stylists (stylist_name VARCHAR (255), id serial PRIMARY KEY);_
-* _User enters a word to search within a full sentence_
+* _CREATE TABLE clients (client_name VARCHAR (255), stylist_id INT, id serial PRIMARY KEY);_
 * _User enters a word to search within a full sentence_
 
 

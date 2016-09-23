@@ -26,7 +26,7 @@
             $test_stylist->save();
 
             // ACT
-            $result = $test_stylist::getAll();
+            $result = Stylist::getAll();
 
             // ASSERT
             $this->assertEquals($test_stylist, $result[0]);
