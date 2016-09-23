@@ -10,10 +10,10 @@
             <h1>HairSQL Barber Shop</h1>
         </div>
         <div class="container">
-            <h1>Clients Assigned to {{ stylist.getStylistName }}</h1>
-            {% if tasks is not empty %}
+            <h1>Clients Assigned to {{stylist.getStylistName}}</h1>
+            {% if matchingClients is not empty %}
                 <ul>
-                    {% for client in clients %}
+                    {% for client in matchingClients %}
                     <li>{{ client.getClientName }}</li>
                     {% endfor %}
                 </ul>
@@ -21,8 +21,8 @@
 
             <h2>Add a Client</h2>
             <form action="/clients" method="post">
-                <input id="category_id" name="category_id" type="hidden" value="{{stylist.getId()}}">
                 <label for="new_client_name">New Client Name</label>
+                <input id="stylist_id" name="stylist_id" type="hidden" value="{{stylist.getId()}}">
                 <input id="new_client_name" name="new_client_name" type="text" required class="form-control"><br>
                 <button class="btn btn-success" type="submit">Add Client</button><br>
             </form><hr>
