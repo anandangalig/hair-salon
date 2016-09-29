@@ -56,8 +56,8 @@
                 if ($client_id == $search_id) {
                     $found_client = $client;
                 }
-                return $found_client;
             }
+            return $found_client;
         }
 
         function update($new_client_name) {

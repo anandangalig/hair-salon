@@ -52,15 +52,18 @@
       return $app['twig']->render("stylists.html.twig", array('stylist' => $stylist, 'matchingClients' => $match_clients));
     });
 
-    $app->get("/client_edit/{id}", function($id) use ($app) {
+    $app->get("/client_edit/{id}{stylist_id}", function($id, $stylist_id) use ($app) {
         $client = Client::find($id);
-        return $app["twig"]->render("edit.html.twig", array('client' => $client));
+        $stylist = Stylist::find($stylist_id);
+        return $app["twig"]->render("editclient.html.twig", array('client' => $client, 'stylist' => $stylist));
     });
 
-    $app->patch("/client_update/{id}", function($id) use ($app) {
+    $app->patch("/client_update/{id}{stylist_id}", function($id, $stylist_id) use ($app) {
         $client = Client::find($id);
         $client->update($_POST['new_client_name']);
-        return $app["twig"]->render("editclient.html.twig", array('client' => $client));
+        $stylist = Stylist::find($stylist_id);
+        $match_clients = $stylist->getClients();
+        return $app["twig"]->render("stylists.html.twig", array('stylist' => $stylist, 'matchingClients' => $match_clients));
     });
 
 

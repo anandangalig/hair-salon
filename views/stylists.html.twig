@@ -13,10 +13,12 @@
             <h1>Clients Assigned to {{stylist.getStylistName}}</h1>
             {% if matchingClients is not empty %}
                 {% for client in matchingClients %}
-                    <li>{{client.getClientName}}: <p><a href="client_edit/{{client.getId}}" method="post">edit/delete</a></p></li>
+                    <li>{{client.getClientName}}:</li>
+                    <form action="/client_edit/{{client.getId}}{{stylist.getId}}">
+                        <button type="submit">edit/delete</button>
+                    </form>
                 {% endfor %}
             {% endif %}
-
             <h2>Add a Client</h2>
             <form action="/client_add/{{stylist.getId}}" method="post">
                 <label for="new_client_name">New Client Name</label>
