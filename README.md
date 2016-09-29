@@ -1,13 +1,13 @@
-# __
+# _Hair Salon_
 
-####_A basic app that returns how frequently a word appears in a given string. 09/16/2016_
+####_A basic app practicing one-to-many relationships for a hair salon to keep track of their stylists and their respective clients. 09/29/2016_
 
 #### By _**Anand Angalig**_
 
 
 ## Description
 
-_The user inputs both the word and the string of words to check within. The application will search for full word matches only and output the number of times the word was repeated._
+_The owner is able to add stylists, and for each stylist, add clients who see that stylist. The stylists work independently, so each client only belongs to a single stylist._
 
 
 ## Setup/Installation Requirements
@@ -17,10 +17,15 @@ _The user inputs both the word and the string of words to check within. The appl
     * _Navigate to the directory in which you want the project to reside_
 
     * _Enter the following command into your terminal:_
-        _git clone https://github.com/anandangalig/word-frequency.git_
+        _git clone https://github.com/anandangalig/hair-salon.git_
 
     * _Navigate to the cloned directory, and execute the following command in the terminal:_
           _composer install_
+
+    * _Start your local hosting program, such as MAMP, and set the Web Server preference to highest level of the  downloaded repository file_
+
+    * _To start the MySQL, go to the terminal and execute:_
+        _/Applications/MAMP/Library/bin/mysql --host=localhost -uroot -proot_
 
     * _Navigate to the web directory and start your local host by executing the following command in your terminal:_
           _php -S localhost:8000_
@@ -31,40 +36,35 @@ _The user inputs both the word and the string of words to check within. The appl
     * _If you wish to look at the source code, feel free to browse through the files in the directory_
 
 
-## Specs
+## User Stories:
 
-* _User enters a word to search in a string without a match_
- * _IN: "apple" in "orange"_
- * _OUT: Repeated 0 times. There were no matches found_
+* _As the administrator, he/she/they is able to see all stylists and clients on the main page_
 
-* _User enters a word to search in a string with a match_
- * _IN:  "apple" in "apple"_
- * _OUT: Repeated 1 time_
+* _As the administrator, he/she/they is able to create new stylist_
 
-* _User enters a word to search within a two-word string with a match_
-  * _IN:  "apple" in "apple orange"_
-  * _OUT: Repeated 1 time_
+* _As the administrator, he/she/they is able to delete individual stylists, as well as all stylists_
 
-* _User enters a word to search within a full sentence_
- * _IN: "apple" in "An apple a day keeps the doctor away."_
- * _OUT: Repeated 1 time_
+* _As the administrator, he/she/they is able to create and assign clients to a specific stylist_
 
-* _User enters a word to search within a paragraph with repeated matches_
- * _IN: "apple" in "In taste an apple is tasty and juicy, and has various tastes from sour to sweet. One can eat an apple raw, cooked, or baked, and it can be used in various dishes, such as apple sauce apple compote, apple pie, apple strudel, etc."_
- * _OUT: Repeated 6 times_
+* _As the administrator, he/she/they is able to see all assigned clients of a given stylist_
+
+* _As the administrator, he/she/they is able to update/delete individual clients, as well as all clients_
+
+
 
 ## MySQL Commands Used:
+
 * _CREATE DATABASE hair_salon;_
 * _USE hair_salon;_
 * _CREATE TABLE stylists (stylist_name VARCHAR (255), id serial PRIMARY KEY);_
 * _CREATE TABLE clients (client_name VARCHAR (255), stylist_id INT, id serial PRIMARY KEY);_
-* _User enters a word to search within a full sentence_
+
 
 
 
 ## Known Bugs
 
-_None yet_
+_Lacking update functionality for the Stylist name._
 
 
 ## Support and Contact Details
@@ -77,6 +77,7 @@ _Please feel free to contact us at:_
 * _silex v~2.0_
 * _twig v~1.0_
 * _phpunit v5.5.*_
+* _MAMP_
 
 
 
