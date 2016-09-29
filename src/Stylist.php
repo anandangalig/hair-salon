@@ -19,7 +19,7 @@
         function setStylistName($new_stylist_name){
             $this->stylist_name = $new_stylist_name;
         }
-        
+
         function getClients() {
             $matching_clients = array();
             $belonging_clients = $GLOBALS['DB']->query("SELECT * FROM clients WHERE stylist_id = {$this->getId()};");
@@ -63,13 +63,18 @@
                 if ($stylist_id == $search_id) {
                     $found_stylist = $stylist;
                 }
-                return $found_stylist;
             }
+            return $found_stylist;//return needs to be outside of the FOR loop!!!!!!!!!!
         }
 
         function update($new_stylist_name) {
             $GLOBALS['DB']->exec("UPDATE stylists SET stylist_name = '{$new_stylist_name}' WHERE id = {$this->getId()};");
             $this->setStylistName($new_stylist_name);
+        }
+
+        function deleteStylist()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM stylists WHERE id = {$this->getId()};");
         }
     }
  ?>

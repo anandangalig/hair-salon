@@ -13,7 +13,7 @@
             <div class="col-md-6">
                 <p>Create a New Stylist Here:</p><hr>
                 <div class="form-group">
-                    <form action="/stylists" method="post" class="form-inline">
+                    <form action="/create_stylist" method="post" class="form-inline">
                         <label for="new_stylist">New Stylist Name</label>
                         <input id="new_stylist" name="new_stylist" type="text" class="form-control" required><br><br>
                         <button type="submit" class="btn btn-success">Add Stylist</button>
@@ -24,7 +24,7 @@
                 {% if stylists is not empty %}
                     <p>All Existing Stylists:</p>
                     {% for stylist in stylists %}
-                        <li><a href="/stylists/{{ stylist.getId }}">{{ stylist.getStylistName }}</a></li>
+                        <li><a href="/stylists/{{stylist.getId}}">{{stylist.getStylistName}}</a></li>
                     {% endfor %}
                     <br><form action="/delete_stylists" method="post">
                         <button type="submit" class="btn btn-danger">Delete All</button>

@@ -12,21 +12,22 @@
         <div class="container">
             <h1>Clients Assigned to {{stylist.getStylistName}}</h1>
             {% if matchingClients is not empty %}
-                <ul>
-                    {% for client in matchingClients %}
-                    <li>{{ client.getClientName }}</li>
-                    {% endfor %}
-                </ul>
+                {% for client in matchingClients %}
+                    <li>{{client.getClientName}}: <p><a href="client_edit/{{client.getId}}" method="post">edit/delete</a></p></li>
+                {% endfor %}
             {% endif %}
 
             <h2>Add a Client</h2>
-            <form action="/clients" method="post">
+            <form action="/client_add/{{stylist.getId}}" method="post">
                 <label for="new_client_name">New Client Name</label>
-                <input id="stylist_id" name="stylist_id" type="hidden" value="{{stylist.getId()}}">
                 <input id="new_client_name" name="new_client_name" type="text" required class="form-control"><br>
                 <button class="btn btn-success" type="submit">Add Client</button><br>
             </form><hr>
-            <a href="/" role="button" class="btn btn-info">Back to Main Page</a>
+            <form action="/delete_stylist/{{stylist.getId}}" method="post">
+                <input name="_method" type="hidden" value="delete">
+                <button type="submit" class="btn btn-danger">Delete {{stylist.getStylistName}}'s Account</button>
+            </form><br>
+            <p><a href="/">Back to Main Page</a></p>
         </div>
     </body>
 </html>
