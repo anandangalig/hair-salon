@@ -10,7 +10,7 @@
             <h1>HairSQL Barber Shop</h1>
         </div><hr>
         <div class="jumbotron row text-center">
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <p>Create a New Stylist Here:</p><hr>
                 <div class="form-group">
                     <form action="/create_stylist" method="post" class="form-inline">
@@ -20,7 +20,7 @@
                     </form>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
                 {% if stylists is not empty %}
                     <p>All Existing Stylists:</p>
                     {% for stylist in stylists %}
@@ -31,6 +31,19 @@
                     </form>
                 {% else %}
                     <p>There are no Stylists yet!</p>
+                {% endif %}<br>
+            </div>
+            <div class="col-md-4">
+                {% if clients is not empty %}
+                    <p>All Existing Clients:</p>
+                    {% for client in clients %}
+                        <li>{{client.getClientName}}</li>
+                    {% endfor %}
+                    <br><form action="/client_delete_all" method="post">
+                        <button type="submit" class="btn btn-danger">Delete All</button>
+                    </form>
+                {% else %}
+                    <p>There are no Clients yet!</p>
                 {% endif %}<br>
             </div>
         </div>

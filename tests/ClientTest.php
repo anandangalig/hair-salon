@@ -134,5 +134,25 @@
             //ASSERT
             $this->assertEquals("Baayaa", $test_client->getClientName());
         }
+
+        function test_deleteClient() {
+            //ARRANGE
+            //========The Stylist:================
+            $id = null;
+            $name = "Alicia";
+            $test_stylist = new Stylist($name, $id);
+            $test_stylist->save();
+            //========The Clients:================
+            $name = "Anand";
+            $stylist_id = $test_stylist->getId();
+            $test_client = new Client($name, $stylist_id, $id);
+            $test_client->save();
+
+            //ACT
+            $test_client->deleteClient();
+
+            //ASSERT
+            $this->assertEquals([], Client::getAll());
+        }
     }
  ?>

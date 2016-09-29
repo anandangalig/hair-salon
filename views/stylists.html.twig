@@ -10,12 +10,12 @@
             <h1>HairSQL Barber Shop</h1>
         </div>
         <div class="container">
-            <h1>Clients Assigned to {{stylist.getStylistName}}</h1>
+            <h1>Clients Assigned to <strong>{{stylist.getStylistName}}</strong></h1>
             {% if matchingClients is not empty %}
                 {% for client in matchingClients %}
-                    <li>{{client.getClientName}}:</li>
-                    <form action="/client_edit/{{client.getId}}{{stylist.getId}}">
-                        <button type="submit">edit/delete</button>
+                    <form action="/client_edit/{{client.getId}}/{{stylist.getId}}">
+                        <li>{{client.getClientName}}:
+                        <button type="submit">edit/delete</button></li><br>
                     </form>
                 {% endfor %}
             {% endif %}

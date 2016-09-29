@@ -65,9 +65,9 @@
             $this->setClientName($new_client_name);
         }
 
-        function deleteClient($client_id)
+        function deleteClient()
         {
-            $GLOBALS['DB']->exec("DELETE FROM clients WHERE id = $client_id;");//needs more work
+            $GLOBALS['DB']->exec("DELETE FROM clients WHERE id = {$this->getId()};");
         }
     }
  ?>
